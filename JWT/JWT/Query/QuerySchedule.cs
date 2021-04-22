@@ -53,7 +53,7 @@ namespace JWT.Query
         }
         public string GetSchedule(string username,string password)
         {
-            string query = "select * from schedule , Account  where username ='" + username + "'and password = '" + password + "'";
+            string query = "select * from schedule s, Account acc  where username ='" + username + "'and password = '" + password + "' and s.userid=acc.id ";
             return ExcuteQuery(query);
         }
         public void AddSchedule(int userid, string day, string time, string job)

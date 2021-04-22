@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -18,11 +20,11 @@ namespace JWT
     
     public class APIAuthorization: Attribute, IAuthorizationFilter 
     {
+      
         public void OnAuthorization(AuthorizationFilterContext filterContext)
-        {      
-            
-
-            if(Startup.listToken.Count!=0&&ValidateJwtToken(User.token)!=null)
+        {        
+            var token = filterContext.HttpContext.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+            if (check(token))
             {
                 return;
             }
@@ -30,7 +32,7 @@ namespace JWT
             {                
                 filterContext.HttpContext.Response.Headers.Add("AuthStatus", "NotAuthorized");
                 filterContext.HttpContext.Response.StatusCode = (int)HttpStatusCode.Forbidden;
-                filterContext.HttpContext.Response.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = "Not Authorized";
+                filterContext.HttpContext.Response.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = "Not Authorized";              
                 filterContext.Result = new JsonResult("NotAuthorized")
                 {
                     Value = new
@@ -39,11 +41,20 @@ namespace JWT
                         Message = "Invalid Token"
                     },
                 };
-            }
-           
+            }    
 
         }
-        public string ValidateJwtToken(string token)
+        public bool check(string token)
+        {
+            // kiem tra tung token trong listToken xem co dung khong
+            foreach (var item in Startup.listToken)
+            {
+                if (item==token&&ValidateJwtToken(token)!=null  )
+                    return true;
+            }            
+            return false;
+        }
+        public int? ValidateJwtToken(string token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF32.GetBytes("MyAPIKey");
@@ -55,16 +66,12 @@ namespace JWT
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
                     ValidateAudience = false,
-                    // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
                     ClockSkew = TimeSpan.Zero
                 }, out SecurityToken validatedToken);
-
                 var jwtToken = (JwtSecurityToken)validatedToken;
-
-                var username = jwtToken.Claims.First(a => a.Type == "username").Value;
-
-                // return account id from JWT token if validation successful
-                return username;
+                int id = Int32.Parse(jwtToken.Claims.First(a => a.Type == "id").Value);
+                // tra ve username 
+                return id;
             }
             catch
             {
@@ -72,9 +79,5 @@ namespace JWT
                 return null;
             }
         }
-
-
-
-
     }
 }

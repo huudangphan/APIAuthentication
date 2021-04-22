@@ -20,7 +20,7 @@ namespace JWT.Controllers
         [HttpGet]
         public string GetSchedule(string username,string password)
         {
-            return sche.GetSchedule(username,password);
+            return sche.GetSchedule(username, password);
         }
         [HttpPost]
         public void AddSchedule(int userid,string day,string time,string job)
@@ -37,5 +37,6 @@ namespace JWT.Controllers
         {
             sche.DeleteSchedule(id);
         }
+        
     }
 }

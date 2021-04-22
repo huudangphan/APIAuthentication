@@ -97,11 +97,7 @@ namespace JWT
 
         }
 
-        private readonly AppSettings _appSettings;
-        public AuthenticateService(IOptions<AppSettings> appsttings)
-        {
-            _appSettings = appsttings.Value;
-        }        
+         
         public  User Authenticate(string username, string password)
         {
             // lay username va password tu database
@@ -121,22 +117,23 @@ namespace JWT
             if (user == null)
                 return null;
             var tokenHandle = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF32.GetBytes(_appSettings.Key);
+            var key = Encoding.UTF32.GetBytes("MyAPIKey");
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new System.Security.Claims.ClaimsIdentity(new Claim[]
-                 {   new Claim("username",user.username.ToString()),
+                 {   
+                     new Claim("id",user.userID.ToString()),
                      new Claim(ClaimTypes.Role,"Admin"),
                      new Claim(ClaimTypes.Version,"V3.1")
                  }),
-                Expires = DateTime.UtcNow.AddMinutes(20),
+                Expires = DateTime.UtcNow.AddMinutes(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             user.password = "";
             var token = tokenHandle.CreateToken(tokenDescriptor);
             string tokenRes = tokenHandle.WriteToken(token);
-            User.token = tokenRes;
-            Startup.listToken.Add(tokenRes);
+            user.token = tokenRes;
+            Startup.listToken.Add(tokenRes);            
             return user;
         }
 

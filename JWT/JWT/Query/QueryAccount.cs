@@ -62,6 +62,7 @@ namespace JWT.Query
             string query= "update Account set password = '" + password + "' where username = '" + username + "'";
             ExcuteNonquery(query);
         }
+
                
     }
 }

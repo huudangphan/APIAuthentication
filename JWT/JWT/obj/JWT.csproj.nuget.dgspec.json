@@ -1,29 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ThucTap\\APIAuthentication\\JWT\\JWT\\JWT.csproj": {}
+    "D:\\APIAuthentication\\JWT\\JWT\\JWT.csproj": {}
   },
   "projects": {
-    "D:\\ThucTap\\APIAuthentication\\JWT\\JWT\\JWT.csproj": {
+    "D:\\APIAuthentication\\JWT\\JWT\\JWT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ThucTap\\APIAuthentication\\JWT\\JWT\\JWT.csproj",
+        "projectUniqueName": "D:\\APIAuthentication\\JWT\\JWT\\JWT.csproj",
         "projectName": "JWT",
-        "projectPath": "D:\\ThucTap\\APIAuthentication\\JWT\\JWT\\JWT.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\ThucTap\\APIAuthentication\\JWT\\JWT\\obj\\",
+        "projectPath": "D:\\APIAuthentication\\JWT\\JWT\\JWT.csproj",
+        "packagesPath": "C:\\Users\\huuda\\.nuget\\packages\\",
+        "outputPath": "D:\\APIAuthentication\\JWT\\JWT\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.1.config",
+          "C:\\Users\\huuda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\ThucTap\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
