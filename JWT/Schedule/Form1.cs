@@ -50,41 +50,23 @@ namespace Schedule
                         s.id = data["userID"].Value<int>();
                         s.username = data["username"].Value<string>();
                         s.password = data["password"].Value<string>();
-
-                        //MessageBox.Show(s.token);                  
+                        s.token = data["token"].Value<string>();
+                        if(s.token!=null)
+                        {
+                            TKB f = new TKB(s);
+                            this.Hide();
+                            f.ShowDialog();
+                            this.Show();
+                        }
+                                       
 
                     }
                 }
 
-
-                //string Urlbase2 = "https://localhost:44390/Authentication";
-                //string url2 = string.Format(Urlbase2);
-                //WebRequest request2 = WebRequest.Create(url2);
-                ////request2.ContentType = "application/json";
-                //request2.Method = "GET";
-                //using (var streamWriter2 = new StreamWriter(request2.GetRequestStream()))
-                //{
-
-                //    var response2 = request2.GetResponse();
-                //    using (var streamReader2 = new StreamReader(response2.GetResponseStream()))
-                //    {
-                //        var result2 = streamReader2.ReadToEnd();
-                //        var data2 = (JObject)JsonConvert.DeserializeObject(result2);
-                //        s.token = data2.ToString();
-
-                //        if (data2 != null)
-                //        {
-                //            this.Hide();
-                //            TKB f = new TKB(s);
-                //            f.ShowDialog();
-                //            this.Show();
-                //        }
-                //    }
-                //}
-
+              
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 MessageBox.Show("Username or Password invalid");
@@ -92,56 +74,13 @@ namespace Schedule
             
             
         }
-        private void getToken()
-        {
-            try
-            {
-                
-                string Urlbase = "https://localhost:44390/Authentication";
-                               
-                string url = string.Format(Urlbase);
-                WebRequest request = WebRequest.Create(url);
-                //request.Method = "GET";
-
-
-                WebResponse response = request.GetResponse();
-                using (Stream dataStream = response.GetResponseStream())
-                {
-
-                    StreamReader reader = new StreamReader(dataStream);
-
-                    string responseFromServer = reader.ReadToEnd();
-                    if (responseFromServer != "[]")
-                    {
-
-                        TKB f = new TKB(s);
-                        this.Hide();
-                        f.ShowDialog();
-                        this.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("username or password invalid");
-                    }
-
-                }
-                response.Close();
-
-
-                
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.ToString());
-            }
-        }
+ 
         private void button1_Click(object sender, EventArgs e)
         {
             string username = txtusername.Text;
             string password = txtpassword.Text;
-            //Login(username, password);
-            getToken();
+            Login(username, password);
+
 
         }
     }

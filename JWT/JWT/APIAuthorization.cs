@@ -41,43 +41,43 @@ namespace JWT
                         Message = "Invalid Token"
                     },
                 };
-            }    
-
+            }
         }
         public bool check(string token)
         {
-            // kiem tra tung token trong listToken xem co dung khong
+            // kiem tra tung token trong listToken khong
             foreach (var item in Startup.listToken)
             {
-                if (item==token&&ValidateJwtToken(token)!=null  )
+                if (item == token )
                     return true;
-            }            
+            }
             return false;
         }
-        public int? ValidateJwtToken(string token)
-        {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF32.GetBytes("MyAPIKey");
-            try
-            {
-                tokenHandler.ValidateToken(token, new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ClockSkew = TimeSpan.Zero
-                }, out SecurityToken validatedToken);
-                var jwtToken = (JwtSecurityToken)validatedToken;
-                int id = Int32.Parse(jwtToken.Claims.First(a => a.Type == "id").Value);
-                // tra ve username 
-                return id;
-            }
-            catch
-            {
-                // return null if validation fails
-                return null;
-            }
-        }
+
+        //public int? ValidateJwtToken(string token)
+        //{
+        //    var tokenHandler = new JwtSecurityTokenHandler();
+        //    var key = Encoding.UTF32.GetBytes("MyAPIKey");
+        //    try
+        //    {
+        //        tokenHandler.ValidateToken(token, new TokenValidationParameters
+        //        {
+        //            ValidateIssuerSigningKey = true,
+        //            IssuerSigningKey = new SymmetricSecurityKey(key),
+        //            ValidateIssuer = false,
+        //            ValidateAudience = false,
+        //            ClockSkew = TimeSpan.Zero
+        //        }, out SecurityToken validatedToken);
+        //        var jwtToken = (JwtSecurityToken)validatedToken;
+        //        int id = Int32.Parse(jwtToken.Claims.First(a => a.Type == "id").Value);
+        //        // tra ve username 
+        //        return id;
+        //    }
+        //    catch
+        //    {
+        //        // return null if validation fails
+        //        return null;
+        //    }
+        //}
     }
 }

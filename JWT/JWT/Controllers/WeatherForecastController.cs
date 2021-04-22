@@ -12,7 +12,7 @@ using System.ComponentModel.DataAnnotations;
 namespace JWT.Controllers
 {
     [APIAuthorization]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]      
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]      
     [ApiController]
     [Route("[controller]")]           
     

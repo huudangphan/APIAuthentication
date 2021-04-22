@@ -33,9 +33,8 @@ namespace Schedule
             using (WebClient wc = new WebClient())
             {
                 try
-                {
-                   
-                   wc.Headers.Add("Authorization", "Bearer " + sess.token);
+                {                   
+                    wc.Headers.Add("Authorization", "Bearer " + sess.token);
                     var json = wc.DownloadString(baseURL);
                     
                     var data = JsonConvert.DeserializeObject<List<ScheduleModel>>(json);
@@ -44,10 +43,9 @@ namespace Schedule
                 }
                 catch (Exception ex)
                 {
-                    
+                    MessageBox.Show(ex.ToString());
                 }
             }
-
         }
         //public void Them(string userid, string day, string thoigian, string viec)
         //{
@@ -92,7 +90,7 @@ namespace Schedule
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Login Session expies, please login again");
                 this.Close();
@@ -116,7 +114,7 @@ namespace Schedule
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 MessageBox.Show("Login Session expies, please login again");
                 this.Close();
@@ -140,7 +138,7 @@ namespace Schedule
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Login Session expies, please login again");
                 this.Close();
@@ -164,7 +162,7 @@ namespace Schedule
                 }                
                 loadData();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 MessageBox.Show("Login Session expies, please login again");
                 this.Close();
@@ -198,7 +196,7 @@ namespace Schedule
                     loadData();
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 MessageBox.Show("Login Session expies, please login again");
                 this.Close();
