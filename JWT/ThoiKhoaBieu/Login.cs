@@ -23,7 +23,6 @@ namespace ThoiKhoaBieu
         Session s = new Session();
         public void Login2(string username, string password)
         {
-
             try
             {
                 string Urlbase = "https://localhost:44390/Authentication";
@@ -58,18 +57,14 @@ namespace ThoiKhoaBieu
                         }
                     }
                 }
-
             }
-
-
             catch (Exception)
             {
-
                 MessageBox.Show("Username or Password invalid");
             }
-        }
+        }             
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnLogin_Click_1(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
             string password = txtPassword.Text;

@@ -33,14 +33,11 @@ namespace ThoiKhoaBieu
             string baseURL = "https://localhost:44390/api/Schedule?username=" + sess.username + "&password=" + sess.password;
             using (WebClient wc = new WebClient())
             {
-
                 try
                 {
                     wc.Headers.Add("Authorization", "Bearer " + sess.token);
                     var json = wc.DownloadString(baseURL);
-
                     var data = JsonConvert.DeserializeObject<List<ScheduleModel>>(json);
-
                     dataGridView1.DataSource = data;
                 }
                 catch (Exception ex)

@@ -80,6 +80,7 @@ namespace ThoiKhoaBieu
             this.btnLogin.Size = new System.Drawing.Size(101, 52);
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Login";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click_1);
             // 
             // Login
             // 
