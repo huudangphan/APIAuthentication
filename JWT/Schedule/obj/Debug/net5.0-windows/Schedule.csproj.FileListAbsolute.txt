@@ -163,7 +163,6 @@ D:\APIAuthentication\JWT\Schedule\bin\Debug\net5.0-windows\runtimes\win\lib\netc
 D:\APIAuthentication\JWT\Schedule\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.Net.Http.WinHttpHandler.dll
 D:\APIAuthentication\JWT\Schedule\bin\Debug\net5.0-windows\runtimes\unix\lib\netstandard2.0\System.Private.ServiceModel.dll
 D:\APIAuthentication\JWT\Schedule\bin\Debug\net5.0-windows\runtimes\win7\lib\netstandard2.0\System.Private.ServiceModel.dll
-D:\APIAuthentication\JWT\Schedule\obj\Debug\net5.0-windows\Schedule.csprojAssemblyReference.cache
 D:\APIAuthentication\JWT\Schedule\obj\Debug\net5.0-windows\Schedule.Form1.resources
 D:\APIAuthentication\JWT\Schedule\obj\Debug\net5.0-windows\Schedule.Info.resources
 D:\APIAuthentication\JWT\Schedule\obj\Debug\net5.0-windows\Schedule.TKB.resources
@@ -177,3 +176,4 @@ D:\APIAuthentication\JWT\Schedule\obj\Debug\net5.0-windows\Schedule.dll
 D:\APIAuthentication\JWT\Schedule\obj\Debug\net5.0-windows\ref\Schedule.dll
 D:\APIAuthentication\JWT\Schedule\obj\Debug\net5.0-windows\Schedule.pdb
 D:\APIAuthentication\JWT\Schedule\obj\Debug\net5.0-windows\Schedule.genruntimeconfig.cache
+D:\APIAuthentication\JWT\Schedule\obj\Debug\net5.0-windows\Schedule.csprojAssemblyReference.cache

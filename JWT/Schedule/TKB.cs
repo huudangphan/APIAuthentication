@@ -11,10 +11,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Schedule
 {
     public partial class TKB : Form
     {
+       
         private Session sess;
         Session Sess
         {
@@ -29,9 +31,10 @@ namespace Schedule
         }
         void loadData()
         {
-            string baseURL = "https://localhost:44390/api/Schedule?username=huudang&password=dang123";
+            string baseURL = "https://localhost:44390/api/Schedule?username="+sess.username+"&password="+sess.password;
             using (WebClient wc = new WebClient())
             {
+                
                 try
                 {                   
                     wc.Headers.Add("Authorization", "Bearer " + sess.token);

@@ -22,14 +22,12 @@ namespace Schedule
         }
         Session s = new Session();
         public void Login(string username,string password)
-        {
-           
+        {          
           
             try
             {
                 string Urlbase = "https://localhost:44390/Authentication";
-                UserModel user = new UserModel();
-               
+                UserModel user = new UserModel();               
                 user.username = username;
                 user.password = password;
                 string postData = JsonConvert.SerializeObject(user);
@@ -58,21 +56,17 @@ namespace Schedule
                             f.ShowDialog();
                             this.Show();
                         }
-                                       
-
                     }
                 }
 
-              
-
             }
+
+
             catch (Exception)
             {
 
                 MessageBox.Show("Username or Password invalid");
-            }
-            
-            
+            }                        
         }
  
         private void button1_Click(object sender, EventArgs e)
@@ -80,8 +74,6 @@ namespace Schedule
             string username = txtusername.Text;
             string password = txtpassword.Text;
             Login(username, password);
-
-
         }
     }
 }
