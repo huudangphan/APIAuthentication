@@ -126,7 +126,7 @@ namespace JWT
                      new Claim(ClaimTypes.Role,"Admin"),
                      new Claim(ClaimTypes.Version,"V3.1")
                  }),
-                Expires = DateTime.UtcNow.AddMinutes(1),
+                Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             user.password = "";
